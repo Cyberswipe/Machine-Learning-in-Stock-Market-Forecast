@@ -47,10 +47,6 @@ def plot_test_train(input_test_df, input_train_df, col_name = 'Close'):
   plt.legend()
   print(x_train.index.max(),x_test.index.min(),x_test.index.max())
 
-"""A good practice would be to split the dataset between test, train and validation. In this case, I have downloaded the data from the yahoo finance API,in such a way that training data is a full 1 year worth. The test data is basically 10 days worth of data to forecast.
-Utilizing the Root Mean Sqaure error metrics to validate our model is a healthy Machine Learning practice.
-"""
-
 def rmse(coeff1, coeff2):
   return np.sqrt(mean_squared_error(coeff1, coeff2))
 
@@ -215,16 +211,11 @@ def evaluate_model(data_raw_df, data_end_df, model_name):
 
     return RMSE_list
 
-"""For this exercise, I have chosen 4 models.
+""" Chosen 4 models.
 1 - ARIMA (Auto Regressive integrated moving average)
 2 - Exponential Smoothing
 3 - Facebook's Prophet model
 4 - LTSM (Long Short Term Memory) Neural Networks
-
-My observation yeilded the following -->
-Since the given problem statement requires forcast of data for the next 10 days, I have observed some accuracy drops. The best performing model for this case was ARIMA. For simplicity and short term prediction - ARIMA performs the best as it avoids overfitting samples, captures basic trends and uses the rolling window average method. I have tried to clean up the code as much as possible in the time frame. Also tried to visualize as much as possible.
-
-The inputs to this exercise involve taking Citi Group's Stock data as well as Standard Chartered's Stock data
 """
 
 if __name__ == "__main__":
